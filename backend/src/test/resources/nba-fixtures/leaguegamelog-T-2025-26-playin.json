@@ -1,0 +1,24 @@
+{
+  "resource": "leaguegamelog",
+  "parameters": {
+    "LeagueID": "00",
+    "Season": "2025-26",
+    "SeasonType": "PlayIn",
+    "PlayerOrTeam": "T",
+    "Counter": 0,
+    "Sorter": "DATE",
+    "Direction": "DESC",
+    "DateFrom": "",
+    "DateTo": ""
+  },
+  "resultSets": [
+    {
+      "name": "LeagueGameLog",
+      "headers": ["SEASON_ID","TEAM_ID","TEAM_ABBREVIATION","TEAM_NAME","GAME_ID","GAME_DATE","MATCHUP","WL","MIN","FGM","FGA","FG_PCT","FG3M","FG3A","FG3_PCT","FTM","FTA","FT_PCT","OREB","DREB","REB","AST","STL","BLK","TOV","PF","PTS","PLUS_MINUS","VIDEO_AVAILABLE"],
+      "rowSet": [
+        ["52025",1610612756,"PHX","Phoenix Suns","0052500211","2026-04-17","PHX vs. GSW","W",240,39,81,0.481,18,49,0.367,15,15,1,9,27,36,23,14,4,15,23,111,15,1],
+        ["52025",1610612744,"GSW","Golden State Warriors","0052500211","2026-04-17","GSW @ PHX","L",240,33,74,0.446,11,33,0.333,19,23,0.826,12,27,39,22,5,0,21,19,96,-15,1]
+      ]
+    }
+  ]
+}

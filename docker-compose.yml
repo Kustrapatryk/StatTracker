@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: stattracker-postgres
+    environment:
+      POSTGRES_DB: stattracker
+      POSTGRES_USER: stattracker
+      POSTGRES_PASSWORD: stattracker
+    ports:
+      - "5432:5432"
+    volumes:
+      # PostgreSQL 18 images keep data in a version-specific subdirectory of /var/lib/postgresql.
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stattracker -d stattracker"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:

@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: stattracker
+  datasource:
+    # reWriteBatchedInserts turns JDBC batches into multi-row INSERTs (a season is ~27k rows).
+    url: jdbc:postgresql://localhost:5432/stattracker?reWriteBatchedInserts=true
+    username: stattracker
+    password: stattracker
+  mvc:
+    problemdetails:
+      enabled: true
+  threads:
+    virtual:
+      enabled: true
+
+server:
+  # The admin endpoints have no authentication, so by default the API is reachable only from this machine.
+  address: 127.0.0.1
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  default-produces-media-type: application/json
+  swagger-ui:
+    operations-sorter: alpha
+  model-converters:
+    # Marks @Nullable record components as nullable, so the generated TypeScript types allow null exactly there.
+    java-nullable-property-customizer:
+      enabled: true
+
+stattracker:
+  ingestion:
+    backfill-from: 2003-04
+    # Empty database: import the whole history. Otherwise: refresh the current season.
+    run-on-startup: true
+    schedule:
+      enabled: true
+      cron: "0 0 9,15 * * *"
+      zone: Europe/Warsaw
